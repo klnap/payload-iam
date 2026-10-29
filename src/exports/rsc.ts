@@ -1,0 +1,18 @@
+/** Server admin views — Payload paths: `@klnap/payload-iam/rsc#<Name>`. */
+
+export { default as AccessHub } from '../modules/access/ui/views/access-hub-view'
+export { default as AccountLinked } from '../modules/account/ui/views/account-linked-view'
+export { default as AccountSecurity } from '../modules/account/ui/views/account-security-view'
+export { default as Account } from '../modules/account/ui/views/account-view'
+export { default as ForgotPassword } from '../modules/auth/methods/email-and-password/ui/views/forgot-password-view'
+export { default as ResetPassword } from '../modules/auth/methods/email-and-password/ui/views/reset-password-view'
+export { default as SetPassword } from '../modules/auth/methods/email-and-password/ui/views/set-password-view'
+export { default as Login } from '../modules/auth/ui/views/login-view'
+export { default as LogoutInactivity } from '../modules/auth/ui/views/logout-inactivity-view'
+export { default as Logout } from '../modules/auth/ui/views/logout-view'
+export { default as InviteAccept } from '../modules/invitations/ui/views/invite-accept-view'
+export { default as RoleUsersCell } from '../modules/rbac/ui/cells/role-users-cell'
+export { default as RolesListCell } from '../modules/rbac/ui/cells/roles-list-cell'
+export { default as Sessions } from '../modules/sessions/ui/views/sessions-view'
+export { default as UserAvatarCell } from '../modules/users/ui/cells/user-avatar-cell'
+export { default as AccessListTabs } from '../modules/users/ui/tabs/access-list-tabs'

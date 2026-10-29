@@ -1,0 +1,463 @@
+/*
+ * Payload admin shell hooks only — no component BEM.
+ * Component UI: Tailwind in TSX; guest layout in `shared/ui/guest/guest.styles.ts`.
+ */
+/* Legacy: invitations used to be in Access group; hide if nav ever re-registers (active list = div, not <a>). */
+.nav #nav-invitations {
+  display: none !important;
+}
+
+.app-header__account {
+  display: none;
+}
+
+.nav__controls {
+  display: none;
+}
+
+.app-header__actions-wrapper,
+.app-header__actions,
+.app-header__last-action {
+  margin-right: 0 !important;
+}
+
+.nav__scroll {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+  padding-block-end: 0 !important;
+}
+
+.nav__scroll > .admin-nav-logo,
+.nav__scroll > .admin-nav-header,
+.nav__scroll > .peui-sidebar-logo-header,
+.nav__scroll > [class*="admin-nav"] {
+  flex-shrink: 0;
+}
+
+.nav__wrap {
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.iam-user-admin-tabs {
+  margin-top: 0;
+}
+
+.collection-edit.iam-account-edit
+  .field-type.iam-user-admin-tabs.tabs-field
+  > .tabs-field__content-wrap {
+  padding-top: calc(var(--base) * 1.5);
+}
+
+/* Role edit — identity row, matrix tabs, users list (page scroll, full width) */
+.collection-edit--roles.collection-edit .collection-edit__main,
+.collection-edit--roles.collection-edit .collection-edit__main-wrapper {
+  max-width: none;
+}
+
+.collection-edit--roles .document-fields__sidebar {
+  display: none;
+}
+
+.collection-edit--roles .document-fields,
+.collection-edit--roles .document-fields__main,
+.collection-edit--roles .document-fields__edit.gutter {
+  max-width: none;
+  width: 100%;
+}
+
+.collection-edit--roles .document-fields__main {
+  min-width: 0;
+}
+
+.collection-edit--roles .field-type.row-field.iam-role-identity-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 18rem);
+  gap: calc(var(--base) * 1.1);
+  align-items: end;
+  margin-bottom: calc(var(--base) * 0.5);
+  max-width: none;
+  width: 100%;
+}
+
+.collection-edit--roles .iam-role-identity-row > .field-type {
+  margin: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.collection-edit--roles .iam-role-users-count .field-type__wrap,
+.collection-edit--roles .iam-role-users-count input {
+  background: var(--theme-elevation-50);
+  border-color: var(--theme-elevation-150);
+  color: var(--theme-text);
+  cursor: default;
+}
+
+.collection-edit--roles .field-type.iam-role-description {
+  margin-bottom: 0;
+}
+
+.collection-edit--roles .tabs-field.iam-role-perms-tabs {
+  border-top: 1px solid var(--theme-elevation-150);
+  margin-top: calc(var(--base) * 1.25);
+  padding-top: calc(var(--base) * 1);
+}
+
+.collection-edit--roles .iam-role-perms-tabs > .tabs-field__tabs-wrap {
+  margin-bottom: calc(var(--base) * 0.5);
+}
+
+.collection-edit--roles .iam-role-perms-tabs > .tabs-field__content-wrap {
+  max-height: none;
+  max-width: 100%;
+  min-width: 0;
+  overflow: visible;
+  padding-top: calc(var(--base) * 0.65);
+  padding-bottom: calc(var(--base) * 1.5);
+  width: 100%;
+}
+
+.collection-edit--roles
+  .iam-role-perms-tabs
+  .tabs-field__content-wrap
+  > .field-type.iam-role-matrix-field {
+  margin-block: 0;
+  padding-block: 0;
+}
+
+.collection-edit--roles .field-type.iam-role-matrix-field > .field-label,
+.collection-edit--roles .iam-role-matrix-field > label.field-label {
+  display: none !important;
+}
+
+/* Users with this role */
+.collection-edit--roles .field-type.group-field.iam-role-users-group {
+  border-top: none;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: calc(var(--base) * 2);
+  margin-bottom: 0;
+  padding: 0;
+  position: relative;
+}
+
+.collection-edit--roles .field-type.group-field.iam-role-users-group::before {
+  border-top: 1px solid var(--theme-elevation-150);
+  content: "";
+  left: calc(var(--gutter-h) * -1);
+  pointer-events: none;
+  position: absolute;
+  right: calc(var(--gutter-h) * -1);
+  top: 0;
+}
+
+.collection-edit--roles .field-type.group-field.iam-role-users-group .group-field__header {
+  margin-bottom: calc(var(--base) * 0.75);
+  margin-top: 0;
+  padding-top: calc(var(--base) * 2.75);
+}
+
+.collection-edit--roles
+  .field-type.group-field.iam-role-users-group
+  .group-field__header
+  .field-label,
+.collection-edit--roles .field-type.group-field.iam-role-users-group .group-field__header label {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.collection-edit--roles .field-type.group-field.iam-role-users-group .group-field__wrap > label,
+.collection-edit--roles .field-type.group-field.iam-role-users-group > label.field-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: calc(var(--base) * 0.5);
+  margin-top: 0;
+  padding-top: calc(var(--base) * 2.75);
+}
+
+.collection-edit--roles .iam-role-users-embedded {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.collection-edit--roles .iam-role-users-embedded .list-header {
+  display: none;
+}
+
+.collection-edit--roles .iam-role-users-embedded .row-1 .cell-title a,
+.collection-edit--roles .iam-role-users-embedded .cell-title a {
+  color: var(--theme-text);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--theme-elevation-300);
+  text-underline-offset: 2px;
+}
+
+.collection-edit--roles .iam-role-users-embedded .row-1 .cell-title a:hover,
+.collection-edit--roles .iam-role-users-embedded .cell-title a:hover {
+  text-decoration-color: var(--theme-text);
+}
+
+.collection-edit--roles .iam-role-users-embedded .collection-list__wrap {
+  border: none;
+  border-bottom: none;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.collection-edit--roles .iam-role-users-embedded .table-wrap {
+  border-inline-end: none;
+  border-right: none;
+}
+
+.collection-edit--roles .iam-role-users-embedded .collection-list__sub-header,
+.collection-edit--roles .iam-role-users-embedded .table-wrap,
+.collection-edit--roles .iam-role-users-group .collection-list,
+.collection-edit--roles .iam-role-users-embedded .table,
+.collection-edit--roles .iam-role-users-embedded table,
+.collection-edit--roles .iam-role-users-embedded .collection-list__tables,
+.collection-edit--roles .iam-role-users-embedded .list-controls {
+  border-bottom: none !important;
+}
+
+.collection-edit--roles .iam-role-users-embedded .table tbody tr:last-child td,
+.collection-edit--roles .iam-role-users-embedded .table tbody tr:last-child th {
+  border-bottom: none;
+}
+
+.collection-edit--roles .iam-role-users-embedded .collection-list__page-info {
+  border-bottom: none !important;
+  margin-bottom: 0;
+  padding-bottom: calc(var(--base) * 0.35);
+}
+
+.collection-edit--roles .field-type.group-field.iam-role-users-group {
+  border-bottom: none;
+}
+
+/* Access hub lists + /account — shared list header + tab strip. */
+.collection-list--roles.collection-list {
+  padding-block: calc(var(--base) * 1.5);
+}
+
+.collection-edit--roles.collection-edit .collection-edit__main-wrapper {
+  padding-block: calc(var(--base) * 1.5);
+}
+
+.collection-list--users .list-header,
+.collection-list--invitations .list-header,
+.collection-list--roles .list-header,
+.collection-list--account .list-header {
+  align-items: flex-end;
+  column-gap: calc(var(--base) * 0.5);
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  row-gap: calc(var(--base) * 0.55);
+  width: 100%;
+}
+
+.collection-list--users .list-header__title.render-title,
+.collection-list--invitations .list-header__title.render-title,
+.collection-list--roles .list-header__title.render-title {
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+  padding-bottom: calc(var(--base) * 0.35);
+}
+
+.collection-list--users .list-header__content,
+.collection-list--invitations .list-header__content,
+.collection-list--roles .list-header__content,
+.collection-list--account .list-header__content,
+.collection-list--users .list-header__after-header-content,
+.collection-list--invitations .list-header__after-header-content,
+.collection-list--roles .list-header__after-header-content,
+.collection-list--account .list-header__after-header-content,
+.collection-list--users .collection-list__sub-header,
+.collection-list--invitations .collection-list__sub-header,
+.collection-list--roles .collection-list__sub-header,
+.collection-list--account .collection-list__sub-header,
+.collection-list--users .iam-access-list,
+.collection-list--invitations .iam-access-list,
+.collection-list--roles .iam-access-list,
+.collection-list--account .iam-access-list {
+  display: contents;
+}
+
+.collection-list--users .list-header__title-and-actions,
+.collection-list--invitations .list-header__title-and-actions,
+.collection-list--roles .list-header__title-and-actions,
+.collection-list--account .list-header__title-and-actions {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--base) * 0.5);
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.collection-list--users .iam-access-list__invite-slot.list-header__title-actions,
+.collection-list--invitations .iam-access-list__invite-slot.list-header__title-actions,
+.collection-list--roles .iam-access-list__invite-slot.list-header__title-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: calc(var(--base) * 0.5);
+  grid-column: 2;
+  grid-row: 1;
+  margin-bottom: 4px;
+}
+
+.collection-list--users .list-header__actions,
+.collection-list--invitations .list-header__actions,
+.collection-list--roles .list-header__actions {
+  grid-column: 4;
+  grid-row: 1;
+  margin-bottom: 4px;
+}
+
+.collection-list--users .iam-access-list__tabs,
+.collection-list--invitations .iam-access-list__tabs,
+.collection-list--roles .iam-access-list__tabs,
+.collection-list--account .iam-access-list__tabs {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+.collection-list--users .list-header__after-header-content,
+.collection-list--invitations .list-header__after-header-content,
+.collection-list--roles .list-header__after-header-content,
+.collection-list--account .list-header__after-header-content {
+  width: 100%;
+}
+
+.collection-list--invitations .collection-list__sub-header,
+.collection-list--roles .collection-list__sub-header,
+.collection-list--users .collection-list__sub-header,
+.collection-list--account .collection-list__sub-header {
+  flex-basis: 100%;
+  margin-top: 0;
+  padding-top: 0;
+  width: 100%;
+}
+
+/* `/account` — same `collection-edit--users` shell as user detail (no `doc-controls`). */
+.collection-edit.iam-account-edit .field-type .iam-account-login-methods {
+  margin-inline: 0;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.collection-edit.iam-account-edit .iam-account-sessions-list {
+  gap: calc(var(--base) * 1.85);
+}
+
+.collection-edit.iam-account-edit .iam-account-change-password .field-type__wrap input {
+  width: 100%;
+}
+
+.collection-edit.iam-account-edit .iam-account-login-methods {
+  max-width: none;
+  width: 100%;
+}
+
+.collection-edit.iam-account-edit .iam-account-login-methods__list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--base) * 1.85);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.collection-edit.iam-account-edit .iam-account-login-methods__label {
+  color: var(--theme-text);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.35;
+  min-width: 0;
+}
+
+.collection-edit.iam-account-edit .iam-account-login-methods__action {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.collection-edit.iam-account-edit .iam-account-login-methods__btn {
+  margin: 0;
+  min-width: 5.5rem;
+}
+
+.collection-edit.iam-account-edit .iam-account-login-methods__action .form-submit {
+  margin: 0;
+}
+
+/* Account login-methods — Google-style actions (admin shell; not shared with guest login). */
+.collection-edit.iam-account-edit .iam-account-login-methods__action .btn {
+  background-color: var(--theme-elevation-100);
+  border: 1px solid var(--theme-elevation-100);
+  border-radius: var(--style-radius-s, 3px);
+  box-shadow: none;
+  color: var(--theme-text);
+  cursor: pointer;
+  font-family: inherit;
+  margin: 0;
+}
+
+.collection-edit.iam-account-edit .iam-account-login-methods__action .btn:hover:not(:disabled) {
+  background-color: var(--theme-elevation-50);
+  border-color: var(--theme-elevation-50);
+}
+
+.collection-edit.iam-account-edit .iam-account-login-methods__action .btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.iam-access-list {
+  width: 100%;
+}
+
+.iam-access-list__tabs.tabs-field {
+  margin-bottom: 0;
+  margin-left: calc(var(--gutter-h) * -1);
+  margin-right: calc(var(--gutter-h) * -1);
+  margin-top: calc(var(--base) * 1.75);
+}
+
+.iam-access-list__tabs .tabs-field__tabs-wrap {
+  padding-top: 0;
+}
+
+.drawer.iam-invite-drawer .drawer__content,
+.drawer.iam-account-password-drawer .drawer__content {
+  width: min(42rem, calc(100% - var(--gutter-h))) !important;
+  max-width: min(42rem, calc(100% - var(--gutter-h))) !important;
+}
+
+@media (max-width: 1024px) {
+  .app-header__controls-wrapper {
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .app-header__actions-wrapper {
+    margin-right: 0 !important;
+    margin-left: auto;
+  }
+
+  .app-header__actions {
+    margin-right: 0 !important;
+    max-width: none !important;
+  }
+}

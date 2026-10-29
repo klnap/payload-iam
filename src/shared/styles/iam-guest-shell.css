@@ -1,0 +1,14 @@
+/*
+ * Guest IAM views render inside Payload `MinimalTemplate` (60px vertical padding + flex center).
+ * `GuestLayout` must not add another full viewport min-height or the page scrolls on desktop.
+ */
+.iam-guest-shell {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.template-minimal:has(.iam-guest-shell) {
+  box-sizing: border-box;
+  min-height: 100dvh;
+  padding: calc(var(--base) * 1.25) var(--gutter-h);
+}

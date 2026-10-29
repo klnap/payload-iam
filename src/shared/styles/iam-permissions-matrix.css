@@ -1,0 +1,156 @@
+/*
+ * Role permissions matrix — Payload Collapsible overrides (scoped under .iam-permissions-matrix).
+ * !important where noted: matrix layout must win over @payloadcms/ui admin styles.
+ */
+
+.iam-permissions-matrix {
+  --iam-matrix-inset-x: calc(var(--base) * 0.9);
+  --iam-matrix-inset-y: calc(var(--base) * 0.5);
+  --iam-matrix-card-bg: var(--theme-elevation-50);
+}
+
+html[data-theme="dark"] .iam-permissions-matrix {
+  --iam-matrix-card-bg: rgba(255, 255, 255, 0.06);
+}
+
+.iam-permissions-matrix .iam-matrix-heads-inner {
+  padding-inline: var(--iam-matrix-inset-x);
+}
+
+.iam-permissions-matrix .iam-matrix-heads-band {
+  isolation: isolate;
+  background: transparent;
+}
+
+.iam-permissions-matrix .iam-matrix-heads-band::before,
+.iam-permissions-matrix .iam-matrix-heads-band::after {
+  content: " ";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.iam-permissions-matrix .iam-matrix-heads-band::before {
+  z-index: 0;
+  background: var(--theme-bg);
+  opacity: 0.3;
+}
+
+.iam-permissions-matrix .iam-matrix-heads-band::after {
+  z-index: 1;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.iam-permissions-matrix .iam-matrix-heads-band > .iam-matrix-heads-scroll {
+  position: relative;
+  z-index: 2;
+}
+
+.iam-permissions-matrix .collapsible.collapsible--style-default,
+.iam-permissions-matrix .iam-matrix-card {
+  background: var(--iam-matrix-card-bg);
+  border-color: var(--theme-elevation-100);
+}
+
+.iam-permissions-matrix .collapsible.collapsible--style-default:hover {
+  border-color: var(--theme-elevation-150);
+}
+
+.iam-permissions-matrix .collapsible__toggle-wrap {
+  position: relative;
+  display: block;
+  background: transparent;
+  padding: var(--iam-matrix-inset-y) var(--iam-matrix-inset-x);
+  padding-inline-end: calc(var(--iam-matrix-inset-x) + var(--base) * 1.5);
+}
+
+.iam-permissions-matrix .collapsible__header-wrap {
+  position: static !important;
+  inset: auto !important;
+  left: auto !important;
+  right: auto !important;
+  max-width: none !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+  width: 100% !important;
+}
+
+.iam-permissions-matrix .collapsible__toggle-wrap:hover {
+  background: var(--theme-elevation-100);
+}
+
+html[data-theme="dark"] .iam-permissions-matrix .collapsible__toggle-wrap:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.iam-permissions-matrix .collapsible__content {
+  background: transparent !important;
+  padding: 0 var(--iam-matrix-inset-x) var(--iam-matrix-inset-y);
+}
+
+.iam-permissions-matrix .collapsible__actions-wrap {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: var(--iam-matrix-inset-x);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  pointer-events: auto;
+  width: calc(var(--base) * 1.35);
+  z-index: 3;
+}
+
+.iam-permissions-matrix .iam-matrix-expand {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: var(--style-radius-s);
+  color: var(--theme-elevation-500);
+  cursor: pointer;
+  display: flex;
+  height: calc(var(--base) * 1.35);
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: calc(var(--base) * 1.35);
+}
+
+.iam-permissions-matrix .iam-matrix-expand:hover {
+  background: var(--theme-elevation-100);
+  color: var(--theme-text);
+}
+
+.iam-permissions-matrix .iam-matrix-expand:focus-visible {
+  box-shadow: 0 0 0 2px var(--theme-success-400);
+  outline: 0;
+}
+
+.iam-permissions-matrix .iam-matrix-row {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.iam-permissions-matrix .iam-matrix-row .row-label {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.iam-permissions-matrix [data-iam-check] {
+  position: relative;
+  z-index: 2;
+}
+
+.iam-permissions-matrix [data-iam-check] .checkbox-input__input input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.iam-permissions-matrix
+  [data-iam-check]
+  .checkbox-input--read-only
+  .checkbox-input__input
+  input[type="checkbox"] {
+  cursor: not-allowed;
+}

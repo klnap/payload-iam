@@ -1,0 +1,139 @@
+{
+  "name": "@klnap/payload-iam",
+  "version": "0.1.0",
+  "description": "Payload CMS identity, access management, and Better Auth integration",
+  "license": "MIT",
+  "author": "klnap",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/klnap/payload-iam"
+  },
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#iam/*": "./src/*"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/exports/index.ts",
+      "default": "./src/exports/index.ts"
+    },
+    "./client": {
+      "types": "./src/exports/client.ts",
+      "default": "./src/exports/client.ts"
+    },
+    "./rsc": {
+      "types": "./src/exports/rsc.ts",
+      "default": "./src/exports/rsc.ts"
+    },
+    "./access": {
+      "types": "./src/modules/rbac/access/can.ts",
+      "default": "./src/modules/rbac/access/can.ts"
+    },
+    "./pg/auth-schema": {
+      "types": "./src/adapters/pg/ensure-auth-schema.ts",
+      "default": "./src/adapters/pg/ensure-auth-schema.ts"
+    },
+    "./email": {
+      "types": "./src/exports/email.ts",
+      "default": "./src/exports/email.ts"
+    },
+    "./i18n": {
+      "types": "./src/exports/i18n.ts",
+      "default": "./src/exports/i18n.ts"
+    },
+    "./paths": {
+      "types": "./src/exports/paths.ts",
+      "default": "./src/exports/paths.ts"
+    },
+    "./next": {
+      "types": "./src/exports/next.ts",
+      "default": "./src/exports/next.ts"
+    },
+    "./styles/entry.css": "./src/styles/iam.entry.css",
+    "./styles/iam-admin.css": "./src/shared/styles/iam-admin.css",
+    "./styles/iam-tailwind.css": "./src/shared/styles/iam-tailwind.css"
+  },
+  "files": [
+    "src",
+    "scripts",
+    "bin",
+    "LICENSE",
+    "README.md"
+  ],
+  "bin": {
+    "payload-iam": "./bin/payload-iam.ts"
+  },
+  "scripts": {
+    "create-root": "bun ./bin/payload-iam.ts create-root",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "bun test tests/unit tests/security tests/architecture && bun run test:int",
+    "test:unit": "bun test tests/unit",
+    "test:arch": "bun test tests/architecture",
+    "test:int": "node ./scripts/with-ephemeral-postgres.mjs -- node ./scripts/run-bun-test-dir.mjs tests/integration",
+    "test:security": "bun test tests/security",
+    "test:e2e": "playwright test",
+    "test:host-regression": "bun ./scripts/host-regression/suites/regression.mjs",
+    "check:exports": "bun run scripts/check-exports.ts",
+    "check:component-exports": "bun run scripts/check-payload-component-exports.ts",
+    "check:host-import-map": "bun run scripts/check-host-import-map.ts",
+    "check:boundaries": "depcruise --config dependency-cruiser.config.mjs --output-type err-long src",
+    "lint": "biome check .",
+    "build": "tsc -p tsconfig.json --noEmit",
+    "build:styles": "tailwindcss -i ./src/styles/iam.utilities.entry.css -o ./src/shared/styles/iam-tailwind.css --minify",
+    "prepack": "bun run build:styles",
+    "prepublishOnly": "bun run build:styles",
+    "email:dev": "email dev --dir ./src/emails --port 4101"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.8.0",
+    "@better-auth/core": "1.7.6",
+    "@better-auth/drizzle-adapter": "1.7.6",
+    "@better-auth/utils": "0.4.2",
+    "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.1.0",
+    "@react-email/tailwind": "^1.0.4",
+    "better-auth": "1.7.6",
+    "kysely": "^0.29.0",
+    "pg": "^8.23.0",
+    "server-only": "^0.0.1",
+    "tailwind-variants": "^3.3.1",
+    "uuid": "^11.1.1",
+    "valibot": "^1.4.2",
+    "zod": "^4.5.4"
+  },
+  "peerDependencies": {
+    "@payloadcms/next": "3.90.2",
+    "@payloadcms/ui": "3.90.2",
+    "drizzle-orm": ">=0.45.2",
+    "next": ">=15.0.0",
+    "payload": "3.90.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@payloadcms/db-postgres": "3.90.2",
+    "@payloadcms/email-nodemailer": "3.90.2",
+    "@payloadcms/richtext-lexical": "3.90.2",
+    "@tailwindcss/cli": "^4.3.3",
+    "@types/bun": "^1.2.0",
+    "@biomejs/biome": "2.5.14",
+    "@types/pg": "^8.23.1",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@playwright/test": "^1.55.1",
+    "@types/uuid": "^10.0.0",
+    "dependency-cruiser": "^18.2.0",
+    "drizzle-orm": "^0.45.2",
+    "payload": "3.90.2",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "react-email": "^6.11.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "5.7.3"
+  },
+  "engines": {
+    "node": "^24.0.0",
+    "bun": ">=1.4.0"
+  }
+}

@@ -1,0 +1,6 @@
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+@import "../shared/styles/iam-guest-shell.css";
+
+@source "../**/*.{ts,tsx}";
+@source not "../**/*.css";
